@@ -1,7 +1,7 @@
 const LUNAR_CRYSTALLIZE_ENABLERS = ["zibai", "columbina", "linnea"];
 const LCR_CONSTRUCT_DURATION = 540;
 const LCR_HARMONY_ICD = 37;
-const LCR_DAMAGE_DELAYS = [23, 35, 47];
+const LCR_DAMAGE_DELAYS = [13, 25, 37];
 
 function esDanioLunarCrystallize(value) {
   return ["lunarcrystallize", "lunarcrystallise", "cristalizacionlunar"].includes(
