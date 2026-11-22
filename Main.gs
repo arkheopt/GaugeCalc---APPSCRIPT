@@ -291,7 +291,7 @@ function PROCESAR_REACCIONES(rango, resistenciaFreeze, lunarCharged, lunarCrysta
     let row = data[i];
     if (row.length > 1) {
       let actor = String(row[1]).trim();
-      if (STELLAR_SWIRL_ENABLERS.includes(actor)) {
+      if (STELLAR_SWIRL_ENABLERS.some((name) => name.toLowerCase() === actor.toLowerCase())) {
         stellarEnabled = true;
       }
       if (actor.toLowerCase() === "anastasya") anastasyaPresent = true;

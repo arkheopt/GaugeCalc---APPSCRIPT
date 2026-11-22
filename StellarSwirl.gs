@@ -1,5 +1,5 @@
 const STELLAR_VORTEX_DURATION = 181;
-const STELLAR_SWIRL_ENABLERS = ["Traveler Cryo", "Sandrone", "Odette"];
+const STELLAR_SWIRL_ENABLERS = ["Traveler Cryo", "Sandrone", "Odette", "Anastasya"];
 
 function procesarStellarSwirl(
   auras,
