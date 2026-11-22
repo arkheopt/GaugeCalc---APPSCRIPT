@@ -14,8 +14,14 @@ function procesarStellarSwirl(
   let eventos = [];
   let participants = participantsOverride || contribuyentesStellar(auras, actorChar, false);
   if (!vortexState || vortexState.expirado || vortexState.exploto) {
+    let anastasya = auras._anastasya;
+    let nivelInicial = 1;
+    if (anastasya && anastasya.present && frames - anastasya.lastVortexPromotion >= 60) {
+      nivelInicial = 2;
+      anastasya.lastVortexPromotion = frames;
+    }
     let vortex = {
-      nivel: 1, stacks: 1, overflow: 0, frameCreacion: frames,
+      nivel: nivelInicial, stacks: 1, overflow: 0, frameCreacion: frames,
       expirado: false, exploto: false, actorChar: actorChar,
       onfield: onfield, index: index, participantesVortex: participants,
     };
@@ -28,7 +34,7 @@ function procesarStellarSwirl(
   vortex.index = index;
 
   vortex.stacks = Math.min(6, vortex.stacks + Math.min(vortex.stacks + 1, 6));
-  vortex.nivel = vortex.stacks >= 3 ? 2 : 1;
+  vortex.nivel = Math.max(vortex.nivel || 1, vortex.stacks >= 3 ? 2 : 1);
   if (vortex.stacks >= 6) {
       let nivelTexto = "Level " + vortex.nivel;
       let participantesStr = vortex.participantesVortex.join(", ");

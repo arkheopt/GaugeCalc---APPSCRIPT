@@ -286,14 +286,15 @@ function PROCESAR_REACCIONES(rango, resistenciaFreeze, lunarCharged, lunarCrysta
   if (data.length === 0) return [["No data"]];
 
   let stellarEnabled = false;
+  let anastasyaPresent = false;
   for (let i = 1; i < data.length; i++) {
     let row = data[i];
     if (row.length > 1) {
       let actor = String(row[1]).trim();
       if (STELLAR_SWIRL_ENABLERS.includes(actor)) {
         stellarEnabled = true;
-        break;
       }
+      if (actor.toLowerCase() === "anastasya") anastasyaPresent = true;
     }
   }
 
@@ -305,6 +306,7 @@ function PROCESAR_REACCIONES(rango, resistenciaFreeze, lunarCharged, lunarCrysta
     _stellarConduct: crearEstadoSC(scEnabled),
     _lunarCrystallize: crearEstadoLCr(lcrEnabled),
     _characterElements: Object.create(null),
+    _anastasya: { present: anastasyaPresent, lastVortexPromotion: -Infinity },
     _freezeResistance: Number(resistenciaFreeze) || 0,
     _lunarCharged: crearEstadoLC(lcEnabled),
   };
