@@ -21,7 +21,7 @@ function procesarStellarSwirl(
       anastasya.lastVortexPromotion = frames;
     }
     let vortex = {
-      nivel: nivelInicial, stacks: 1, overflow: 0, frameCreacion: frames,
+      nivel: nivelInicial, stacks: nivelInicial === 2 ? 3 : 1, overflow: 0, frameCreacion: frames,
       expirado: false, exploto: false, actorChar: actorChar,
       onfield: onfield, index: index, participantesVortex: participants,
     };
